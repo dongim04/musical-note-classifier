@@ -115,4 +115,4 @@ def about():
 if __name__ == '__main__':
     with open('encoder.pkl', 'rb') as file:
         encoder = pickle.load(file)
-    app.run(port=3000, debug=True)
+    app.run(port=5000, debug=True)

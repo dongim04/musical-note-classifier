@@ -12,13 +12,13 @@ The live application is hosted on Render:
 [Musical Note Classifier](https://musical-note-classifier.onrender.com)
 
 ## Download Files
-- [Download Model (cnn-musical-note-classifier.onnx)](https://github.com/<your-username>/musical-note-classifier/raw/main/cnn-musical-note-classifier.onnx)
-- [Download Encoder (encoder.pkl)](https://github.com/<your-username>/musical-note-classifier/raw/main/encoder.pkl)
+- [Download Model (cnn-musical-note-classifier.onnx)](https://github.com/dongim04/musical-note-classifier/raw/main/cnn-musical-note-classifier.onnx)
+- [Download Encoder (encoder.pkl)](https://github.com/dongim04/musical-note-classifier/raw/main/encoder.pkl)
 
 ## Run Locally
 1. Clone this repository:
    ```bash
-   git clone https://github.com/<your-username>/musical-note-classifier.git
+   git clone https://github.com/dongim04/musical-note-classifier.git
    cd musical-note-classifier
    ```
 2. Install dependencies:
@@ -29,4 +29,4 @@ The live application is hosted on Render:
    ```bash
    python app.py
    ```
-4. Open `http://127.0.0.1:5000` in your browser.``
+4. Open `http://127.0.0.1:5000` in your browser.

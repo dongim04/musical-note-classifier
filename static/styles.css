@@ -1,0 +1,50 @@
+body {
+    background: linear-gradient(135deg, #3b91d4, #3bd4cf);
+    font-family: 'Roboto', sans-serif;
+    color: #fff;
+}
+
+.main-container {
+    margin-top: 50px;
+    padding-bottom: 50px;
+}
+
+.card {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(31, 38, 135, 0.37);
+    color: #fff;
+}
+
+.btn-link {
+    color: #00f2fe;
+    text-decoration: underline;
+}
+
+.btn-link:hover {
+    color: #367280;
+    transform: scale(1.1);
+}
+
+.message-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.current-file-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.img-thumbnail {
+    max-width: 300px;
+    max-height: 300px;
+    margin: 10px auto;
+}
+
+.alert-success {
+    background-color: rgba(40, 167, 69, 0.2);
+    color: #fff;
+    border-color: rgba(40, 167, 69, 0.3);
+}

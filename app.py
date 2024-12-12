@@ -115,5 +115,5 @@ def about():
 if __name__ == '__main__':
     with open('encoder.pkl', 'rb') as file:
         encoder = pickle.load(file)
-    port = int(os.environ.get('PORT', 5000))  # Use PORT env variable or default to 5000
+    port = int(os.environ.get('PORT', 3000))  # Use PORT env variable or default to 3000
     app.run(host='0.0.0.0', port=port, debug=True)

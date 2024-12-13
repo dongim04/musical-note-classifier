@@ -8,7 +8,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background: linear-gradient(135deg, #3b91d4, #3bd4cf);
+            background: linear-gradient(135deg, #3b91d4, #042640);
             font-family: 'Roboto', sans-serif;
             color: #fff;
             margin-top: 50px; /* Added margin at the top */
@@ -45,7 +45,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-top: 20px;
+            margin-bottom: 5px;
         }
         .filter-images img {
             width: 120px;
@@ -53,59 +53,311 @@
             border-radius: 5px;
             border: 1px solid rgba(255, 255, 255, 0.2);
         }
+        #zoomContainer {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+    
+        #zoomContainer img {
+            max-width: 100%;
+            transition: transform 0.3s ease;
+        }
+    
+        #zoomContainer:hover img {
+            transform: scale(2); /* Adjust scale for zoom level */
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1 class="text-center mb-4">About Musical Note Classifier</h1>
-        <div class="card p-4 col-12 col-md-8 mx-auto">
-            <h3>Project Overview</h3>
-            <p>
-                The <strong>Musical Note Classifier</strong> is a deep learning model designed to classify musical notes 
-                based on their <strong>pitch</strong> and <strong>length</strong>. The model achieves remarkable performance 
-                with a test accuracy of <strong>99.66%</strong>.
-            </p>
+        <h1 class="text-center mb-4">👩🏻‍💻 About Musical Note Classifier 👀</h1>
+        <div style="text-align: center; margin-top: 20px;">
+            <a href="/" class="btn btn-link">🎵 Go to Predict Musical Notes 🎶</a>
+        </div>
+        <div class="card p-4 col-12 col-md-8 mx-auto"> 
+            <div class="container mt-5">
+                <h1 class="text-center">💡 Overview</h1>
+            
+                <!-- Overview -->
+                <div class="card p-4 mt-4">
+                    <h4>
+                        The <strong>Musical Note Classifier</strong> is a deep learning model designed to classify musical notes 
+                        based on their <strong>pitch</strong> and <strong>length</strong>. The model achieves remarkable performance 
+                        with a test accuracy of <strong>99.66%</strong>.
+                    </h4>
+                </div>
 
-            <h4>Model Highlights</h4>
-            <ul>
-                <li><strong>Architecture:</strong> Convolutional Neural Network (CNN) with 696,255 parameters.</li>
-                <li><strong>Input:</strong> Grayscale images of size (64, 64, 1).</li>
-                <li><strong>Dataset:</strong> Augmented dataset with 73,185 samples.</li>
-                <li><strong>Output:</strong> 85 classes representing note combinations of pitch and length.</li>
-            </ul>
+                <!-- Model Highlights -->
+                <div class="card p-4 mt-4">
+                    <h2>Model Highlights</h2>
+                    <ul>
+                        <li><strong>Architecture:</strong> Convolutional Neural Network (CNN) with 696,255 parameters.</li>
+                        <li><strong>Input:</strong> Grayscale images of size (64, 64, 1).</li>
+                        <li><strong>Dataset:</strong> Augmented dataset with 55,335 samples.</li>
+                        <li><strong>Output:</strong> 85 classes representing note combinations of pitch and length.</li>
+                    </ul>
+                </div>
 
-            <h4>Visual Examples</h4>
-            <div class="filter-images">
-                <img src="/Users/dongimlee/Projects/sheet-music-scanner/templates/assets/filter1.png" alt="Filter 1">
-                <img src="assets/filter2.png" alt="Filter 2">
-                <img src="assets/filter3.png" alt="Filter 3">
-                <img src="assets/filter4.png" alt="Filter 4">
-            </div>            
+                <!-- Examples of Convolutional Filters -->
+                <div class="card p-4 mt-4">
+                    <h2>Examples of Convolutional Filters</h2>
+                    <p>
+                        The CNN's convolutional filters capture key features of the notes. For example:
+                    </p>
+                    <div class="filter-images">
+                        <img src="{{url_for('static', filename='assets/filter1.png')}}" alt="Filter 1">
+                        <img src="{{url_for('static', filename='assets/filter2.png')}}" alt="Filter 1">
+                        <img src="{{url_for('static', filename='assets/filter3.png')}}" alt="Filter 1">
+                        <img src="{{url_for('static', filename='assets/filter4.png')}}" alt="Filter 1">
+                    </div>            
+                    <p>
+                        The filters detect key patterns such as note shapes, stem directions, and staff lines, helping the model distinguish between pitches and note lengths.
+                    </p>
+                </div>    
 
-            <h4>Team Members</h4>
-            <ul>
-                <li><strong>Dongim Lee</strong> - E:C, Class of 2027 - Combined model</li>
-                <li><strong>Sally Lee</strong> - E:C, Class of 2027 - Pitch model</li>
-                <li><strong>Zara Coakley</strong> - E:C, Class of 2027 - Length model</li>
-            </ul>
+                <!-- Team Members -->
+                <div class="card p-4 mt-4">
+                    <h2>Team Members</h2>
+                    <ul>
+                        <li><strong>Dongim Lee</strong> - E:C, Class of 2027</li>
+                        <li><strong>Sally Lee</strong> - E:C, Class of 2027</li>
+                        <li><strong>Zara Coakley</strong> - E:C, Class of 2027</li>
+                    </ul>
+                </div>  
 
-            <div class="container">
-                <h1>About Musical Note Classifier</h1>
-                <p>This project uses a deep learning model to classify musical notes based on their pitch and length.</p>
-                <h3>Download Model and Encoder</h3>
-                <ul>
-                    <li><a href="https://github.com/dongim04/musical-note-classifier/raw/main/cnn-musical-note-classifier.onnx">Download Model (cnn-musical-note-classifier.onnx)</a></li>
-                    <li><a href="https://github.com/dongim04/musical-note-classifier/raw/main/encoder.pkl">Download Encoder (encoder.pkl)</a></li>
-                </ul>
-            </div>            
+                <!-- Download Model and Encoder -->
+                <div class="card p-4 mt-4">
+                    <h2>Download Model and Encoder</h2>
+                    <ul>
+                        <li><a href="https://github.com/dongim04/musical-note-classifier/raw/main/cnn-musical-note-classifier.onnx">Download Model (cnn-musical-note-classifier.onnx)</a></li>
+                        <li><a href="https://github.com/dongim04/musical-note-classifier/raw/main/encoder.pkl">Download Encoder (encoder.pkl)</a></li>
+                    </ul>
+                    <p>
+                        You can also deploy your own models and encoders. Simply upload your model file (<code>.onnx</code>) and encoder file 
+                        (<code>.pkl</code>), and the platform will dynamically switch to your custom setup.
+                    </p>
+                </div>  
 
-            <h4>More Information</h4>
-            <p>For more details about the model, visit our Hugging Face page:</p>
-            <p><a href="https://huggingface.co/dongim04/musical-note-classifier" target="_blank" class="btn btn-link">Hugging Face: Musical Note Classifier</a></p>
-            <a href="/" class="btn btn-link mt-3">Back to Home</a>
+                <!-- More Information -->
+                <div class="card p-4 mt-4">
+                    <h2>More Information</h2>
+                    <p>For more details about the model, visit our Github repo and Hugging Face page:</p>
+                    <p><a href="https://github.com/dongim04/musical-note-classifier" target="_blank" class="btn btn-link">Github: Musical Note Classifier</a></p>
+                    <p><a href="https://huggingface.co/dongim04/musical-note-classifier" target="_blank" class="btn btn-link">Hugging Face: Musical Note Classifier</a></p>        
+                </div>  
+            </div>
+
+            <div class="container mt-5">
+                <h1 class="text-center">🔎 Additional Details</h1>
+            
+                <!-- Data Creation -->
+                <div class="card p-4 mt-4">
+                    <h2>Data Creation</h2>
+                    <p>
+                        We generated a dataset of musical notes using the <code><a href="https://pypi.org/project/music21/">music21</a></code> Python library. The notes 
+                        include various combinations of pitches and lengths. Variations such as sharps, flats, 
+                        and articulations were added for diversity. Each note was rendered as an image and cropped 
+                        to focus on the relevant regions of the musical staff.
+                    </p>
+                    <p>
+                        The dataset includes <strong>85 unique classes</strong>, each representing a combination of 
+                        <strong>17 pitches</strong> and <strong>5 note lengths</strong>. Here's the breakdown:
+                    </p>
+                    <ul>
+                        <li><strong>Pitches:</strong> 17 distinct pitches (A3, B3, C4, D4, E4, F4, G4, A4, B4, C5, D5, E5, F5, G5, A5, B5, C6).</li>
+                        <li><strong>Lengths:</strong> 5 distinct lengths (whole, half, quarter, eighth, 16th).</li>
+                        <li>Total: <strong>85 classes</strong> (e.g., A3eighth, B4whole).</li>
+                    </ul>
+                </div>
+                
+                <!-- Data Augmentation -->
+                <div class="card p-4 mt-4">
+                    <h2>Data Augmentation</h2>
+                    <p>
+                        To ensure the model generalizes well, we augmented the data:
+                    </p>
+
+                    <h3>Augmentation Workflow</h3>
+                    <ul>
+                        <li>Each image in the dataset is augmented <strong>30 times</strong>, resulting in a rich and diverse dataset.</li>
+                        <li>We <strong>cropped, rotated, zoomed, shifted, sheared, and flipped</strong> each image with TensorFlow's <code>ImageDataGenerator</code>.</li>
+                        <li>Augmentation expanded the dataset from <strong>1,785 images</strong> to a total of <strong>55,335 images</strong>.</li>
+                    </ul>
+
+                    <h3>Visualization of Augmented Data</h3>
+                    <div class="filter-images">
+                        <img src="{{ url_for('static', filename='assets/augmented_data1.png') }}" alt="Augmented Data Examples" class="img-fluid">
+                        <img src="{{ url_for('static', filename='assets/augmented_data2.png') }}" alt="Augmented Data Examples" class="img-fluid">
+                        <img src="{{ url_for('static', filename='assets/augmented_data3.png') }}" alt="Augmented Data Examples" class="img-fluid">
+                        <img src="{{ url_for('static', filename='assets/augmented_data4.png') }}" alt="Augmented Data Examples" class="img-fluid">
+                    </div>
+                </div>
+
+                <!-- Model Architecture -->
+                <div class="card p-4 mt-4">
+                    <h2>Model Architecture</h2>
+                    <p>
+                        Our <strong> Musical Note Classifier</strong> incorporates <strong>ReLU activation</strong>, <strong>L2 regularization</strong>, 
+                        <strong>Batch Normalization</strong>, <strong>MaxPooling</strong>, <strong>Dropout</strong>, and 
+                        an <strong>attention mechanism</strong> (SE Block) for high accuracy and robustness.
+                    </p>
+                
+                    <ul>
+                        <li><strong>Input Layer</strong>: Accepts grayscale images of size <code>(64, 64, 1)</code>.</li>
+                        <li><strong>Convolutional Blocks</strong>:
+                            <ul>
+                                <li>Each block includes two <strong>Conv2D</strong> layers with <strong>ReLU activation</strong>.</li>
+                                <li>Regularized with <strong>L2 regularization</strong> (<code>l2(0.001)</code>).</li>
+                                <li>Features stabilized using <strong>BatchNormalization</strong>.</li>
+                                <li>Spatial dimensions reduced via <strong>MaxPooling</strong>.</li>
+                                <li>Regularization applied through <strong>Dropout</strong> (<code>0.25</code> for initial blocks, <code>0.5</code> for fully connected layers).</li>
+                            </ul>
+                        </li>
+                        <li><strong>Attention Mechanism</strong>:
+                            <ul>
+                                <li>Incorporates an <strong>SE Block</strong> that scales feature maps using a squeeze-and-excitation approach, improving feature representation.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Global Average Pooling</strong>: Reduces spatial dimensions to a single feature vector.</li>
+                        <li><strong>Fully Connected Layers</strong>:
+                            <ul>
+                                <li>Dense layers with <strong>ReLU activation</strong> and <strong>Dropout</strong>.</li>
+                                <li>Regularized with <strong>L2 regularization</strong>.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Output Layer</strong>: Fully connected with <code>85 classes</code> and <strong>softmax activation</strong> for classification.</li>
+                    </ul>
+                
+                    <h3>Callbacks Used</h3>
+                    <ul>
+                        <li><strong>EarlyStopping</strong>: Monitors <code>val_loss</code> with a patience of 10 epochs. Automatically restores the best weights to avoid overfitting.</li>
+                        <li><strong>Learning Rate Scheduler</strong> (<code>ReduceLROnPlateau</code>): Dynamically reduces the learning rate by a factor of <code>0.5</code> if <code>val_loss</code> plateaus for 5 epochs. This ensures smooth convergence during training.</li>
+                    </ul>
+                
+                    <h3>Visualization of Model Architecture</h3>
+                    <div style="overflow-x: auto;">
+                        <img src="{{ url_for('static', filename='assets/model_architecture.png') }}" alt="Model Architecture" style="max-width: 5000px; height: 300px; display: block; margin: 0 auto;">
+                    </div>
+                    <p style="text-align: center;"><strong>Figure:</strong> Model architecture showing the layers and connections.</p>
+
+                </div>
+
+            </div>
+
+            <div class="container mt-5">
+                <h1 class="text-center">📊 Results and Analysis</h1>
+            
+                <!-- Test Metrics -->
+                <div class="card p-4 mt-4">
+                    <h2>Performance Metrics</h2>
+                    <p><strong>Test Loss:</strong> 0.1285</p>
+                    <p><strong>Test Accuracy:</strong> 99.66%</p>
+                    <p>
+                        The model demonstrates exceptional performance, with a very low test loss and nearly perfect accuracy. 
+                        This highlights the model's ability to accurately classify musical notes based on pitch and length.
+                    </p>
+                </div>
+            
+                <!-- Loss Curve -->
+                <div class="card p-4 mt-4">
+                    <h2>Training and Validation Loss</h2>
+                    <img src="{{ url_for('static', filename='assets/loss.png') }}" alt="Training and Validation Loss" class="img-fluid">
+                    <p class="mt-3">
+                        The loss curves indicate consistent learning during training. Both the training and validation losses 
+                        stabilize, suggesting effective regularization and generalization.
+                    </p>
+                </div>
+            
+                <!-- Confusion Matrix -->
+                <div class="card p-4 mt-4">
+                    <h2>Confusion Matrix</h2>
+                    <!-- Confusion Matrix Summary -->
+                    <div id="zoomContainer">
+                        <img src="{{url_for('static', filename='assets/confusion_matrix_annot.png')}}" alt="Confusion Matrix">
+                    </div>
+                    <p>
+                        The confusion matrix highlights the model's ability to perfectly classify almost all classes, 
+                        with minimal or no confusion between different note classes.
+                    </p>
+                </div>
+
+                <!-- Classification Report -->
+                <div class="card p-4 mt-4">
+                    <h2>Classification Report</h2>
+                    <div class="table-responsive" style="max-height: 400px; overflow-y: scroll; border: 1px solid #ddd; padding: 10px;">
+                        <table class="table table-striped table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Label</th>
+                                    <th>Precision</th>
+                                    <th>Recall</th>
+                                    <th>F1-Score</th>
+                                    <th>Support</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td>0</td><td>1.0000</td><td>0.9922</td><td>0.9961</td><td>128</td></tr>
+                                <tr><td>1</td><td>1.0000</td><td>0.9773</td><td>0.9885</td><td>132</td></tr>
+                                <tr><td>2</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>85</td></tr>
+                                <tr><td>3</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>69</td></tr>
+                                <tr><td>4</td><td>1.0000</td><td>0.9853</td><td>0.9926</td><td>68</td></tr>
+                                <tr><td>5</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>144</td></tr>
+                                <tr><td>6</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>135</td></tr>
+                                <tr><td>7</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>68</td></tr>
+                                <tr><td>8</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>80</td></tr>
+                                <tr><td>9</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>76</td></tr>
+                                <tr><td>10</td><td>1.0000</td><td>0.9929</td><td>0.9964</td><td>140</td></tr>
+                                <tr><td>11</td><td>0.9931</td><td>1.0000</td><td>0.9965</td><td>143</td></tr>
+                                <tr><td>12</td><td>0.9722</td><td>0.9459</td><td>0.9589</td><td>74</td></tr>
+                                <tr><td>13</td><td>0.9412</td><td>0.9697</td><td>0.9552</td><td>66</td></tr>
+                                <tr><td>14</td><td>0.9189</td><td>1.0000</td><td>0.9577</td><td>68</td></tr>
+                                <tr><td>15</td><td>0.9934</td><td>1.0000</td><td>0.9967</td><td>151</td></tr>
+                                <tr><td>16</td><td>0.9776</td><td>1.0000</td><td>0.9887</td><td>131</td></tr>
+                                <tr><td>17</td><td>1.0000</td><td>0.9875</td><td>0.9937</td><td>80</td></tr>
+                                <tr><td>18</td><td>0.9872</td><td>1.0000</td><td>0.9935</td><td>77</td></tr>
+                                <tr><td>19</td><td>0.9880</td><td>1.0000</td><td>0.9939</td><td>82</td></tr>
+                                <tr><td>20</td><td>1.0000</td><td>0.9877</td><td>0.9938</td><td>163</td></tr>
+                                <tr><td>21</td><td>0.9929</td><td>1.0000</td><td>0.9964</td><td>140</td></tr>
+                                <tr><td>22</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>73</td></tr>
+                                <tr><td>23</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>57</td></tr>
+                                <tr><td>24</td><td>0.9853</td><td>1.0000</td><td>0.9926</td><td>67</td></tr>
+                                <tr><td>25</td><td>0.9856</td><td>1.0000</td><td>0.9928</td><td>137</td></tr>
+                                <tr><td>26</td><td>0.9925</td><td>0.9925</td><td>0.9925</td><td>134</td></tr>
+                                <tr><td>27</td><td>0.9178</td><td>1.0000</td><td>0.9571</td><td>67</td></tr>
+                                <tr><td>28</td><td>0.9818</td><td>0.9474</td><td>0.9643</td><td>57</td></tr>
+                                <tr><td>29</td><td>1.0000</td><td>0.9200</td><td>0.9583</td><td>75</td></tr>
+                                <tr><td>30</td><td>1.0000</td><td>1.0000</td><td>1.0000</td><td>155</td></tr>
+                                <tr><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+                                <tr><td><strong>Weighted Avg</strong></td><td><strong>0.9960</strong></td><td><strong>0.9959</strong></td><td><strong>0.9959</strong></td><td><strong>8301</strong></td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p>
+                        The classification report confirms the model's high precision, recall, and F1-scores across all classes, 
+                        demonstrating its robustness and accuracy.
+                    </p>
+                </div>
+
+                <!-- Analysis Section -->
+                <div class="card p-4 mt-4">
+                    <h2>Short Analysis</h2>
+                    <p>
+                        The CNN Musical Note Classifier performs exceptionally well, achieving near-perfect accuracy across 
+                        multiple classes. The confusion matrix and classification report indicate minimal misclassifications, 
+                        even for challenging note classes. The smooth training and validation loss curves highlight the model's 
+                        ability to generalize well without overfitting.
+                    </p>
+                    <p>
+                        The architecture, featuring multiple convolutional layers and effective data augmentation, plays a crucial 
+                        role in the model's success. Users can utilize this model for real-world applications or deploy their own 
+                        custom models for similar tasks.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-
+    
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

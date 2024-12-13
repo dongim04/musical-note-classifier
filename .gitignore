@@ -1,3 +1,5 @@
 /venv
 /static/models
+/static/encoders
 /static/uploads
+/augmented_musical_note_dataset.zip

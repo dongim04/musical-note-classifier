@@ -11,17 +11,22 @@ app = Flask(__name__)
 # Configuration
 UPLOAD_FOLDER = 'static/uploads'
 MODEL_FOLDER = 'static/models'
+ENCODER_FOLDER = 'static/encoders'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['MODEL_FOLDER'] = MODEL_FOLDER
+app.config['ENCODER_FOLDER'] = ENCODER_FOLDER
 if not os.path.exists(UPLOAD_FOLDER):
     os.makedirs(UPLOAD_FOLDER)
 if not os.path.exists(MODEL_FOLDER):
     os.makedirs(MODEL_FOLDER)
+if not os.path.exists(ENCODER_FOLDER):
+    os.makedirs(ENCODER_FOLDER)
 
 history = []
 session = None
-encoder = None
+deployed_encoder = None
 deployed_model = None  # Track the currently deployed model
+encoder = None  # Store the loaded encoder
 current_file = None  # Track the current uploaded file
 
 
@@ -33,9 +38,18 @@ def load_model(model_path):
     print(f"Model loaded: {model_path}")
 
 
+def load_encoder(encoder_path):
+    """Load the encoder dynamically."""
+    global deployed_encoder, encoder
+    with open(encoder_path, 'rb') as file:
+        encoder = pickle.load(file)  # Deserialize the encoder
+    deployed_encoder = os.path.basename(encoder_path)
+    print(f"Encoder loaded: {encoder_path}")
+
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
-    global session, history, encoder, deployed_model, current_file
+    global session, history, deployed_encoder, deployed_model, encoder, current_file
     prediction = None
     confidence = None
     uploaded_image_url = None
@@ -50,6 +64,15 @@ def home():
             load_model(model_path)  # Dynamically load the new model
             return render_template('index.html', deployed_model=deployed_model, history=history)
 
+        # Handle encoder upload
+        if 'encoderfile' in request.files and request.files['encoderfile'].filename.endswith('.pkl'):
+            encoder_file = request.files['encoderfile']
+            encoder_name = secure_filename(encoder_file.filename)
+            encoder_path = os.path.join(app.config['ENCODER_FOLDER'], encoder_name)
+            encoder_file.save(encoder_path)
+            load_encoder(encoder_path)  # Dynamically load the new encoder
+            return render_template('index.html', deployed_encoder=deployed_encoder, history=history)
+
         # Handle image upload
         if 'imagefile' in request.files:
             image_file = request.files['imagefile']
@@ -60,7 +83,7 @@ def home():
             return render_template('index.html', deployed_model=deployed_model, history=history, current_file=current_file)
 
         # Handle prediction
-        if session and current_file:
+        if session and encoder and current_file:
             try:
                 image_path = os.path.join(app.config['UPLOAD_FOLDER'], current_file['file_name'])
                 image = Image.open(image_path)
@@ -113,7 +136,5 @@ def about():
 
 
 if __name__ == '__main__':
-    with open('encoder.pkl', 'rb') as file:
-        encoder = pickle.load(file)
     port = int(os.environ.get('PORT', 3000))  # Use PORT env variable or default to 3000
     app.run(host='0.0.0.0', port=port, debug=True)

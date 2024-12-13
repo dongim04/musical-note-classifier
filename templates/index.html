@@ -35,19 +35,46 @@
 
         <!-- About Section Button -->
         <div class="text-center mb-4">
-            <a href="/about" class="btn btn-link">Learn more about the project and how it works</a>
+            <a href="/about" class="btn btn-link">👩🏻‍💻 Learn more about the project and how it works 👀</a>
         </div>
 
-        <!-- Model Upload Section -->
-        <div class="card p-4 col-12 col-md-6 mx-auto text-center mb-4">
-            <h3>Deploy a New Model</h3>
-            {% if deployed_model %}
-            <p class="text-muted">Currently deployed model: <strong>{{ deployed_model }}</strong></p>
-            {% endif %}
-            <form action="/" method="post" enctype="multipart/form-data" id="model-upload-form">
-                <input class="form-control mb-3" type="file" id="modelfile" name="modelfile" accept=".onnx">
-                <input class="btn btn-secondary" type="submit" value="Deploy Model">
-            </form>
+        <!-- Model and Encoder Upload Sections -->
+        <div class="row g-3 mb-4">
+            <!-- Model Upload Section -->
+            <div class="col-md-6">
+                <div class="card p-4 text-center">
+                    <h3>Deploy a New Model</h3>
+                    <p class="text-muted">
+                        {% if deployed_model %}
+                        Currently deployed model: <strong>{{ deployed_model }}</strong>
+                        {% else %}
+                        Currently deployed model: <strong>cnn-musical-note-classifier.onnx</strong>
+                        {% endif %}
+                    </p>
+                    <form action="/" method="post" enctype="multipart/form-data" id="model-upload-form">
+                        <input class="form-control mb-3" type="file" id="modelfile" name="modelfile" accept=".onnx">
+                        <input class="btn btn-secondary" type="submit" value="Deploy Model">
+                    </form>
+                </div>
+            </div>
+
+            <!-- Encoder Upload Section -->
+            <div class="col-md-6">
+                <div class="card p-4 text-center">
+                    <h3>Deploy a New Encoder</h3>
+                    <p class="text-muted">
+                        {% if deployed_encoder %}
+                        Currently deployed encoder: <strong>{{ deployed_encoder }}</strong>
+                        {% else %}
+                        Currently deployed encoder: <strong>encoder.pkl</strong>
+                        {% endif %}
+                    </p>
+                    <form action="/" method="post" enctype="multipart/form-data" id="encoder-upload-form">
+                        <input class="form-control mb-3" type="file" id="encoderfile" name="encoderfile" accept=".pkl">
+                        <input class="btn btn-secondary" type="submit" value="Deploy Encoder">
+                    </form>
+                </div>
+            </div>
         </div>
 
         <!-- Image Upload and Prediction Section -->

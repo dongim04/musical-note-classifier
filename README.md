@@ -11,7 +11,7 @@ This project uses a deep learning model to classify musical notes based on their
 The live application is hosted on Render:
 [Musical Note Classifier](https://musical-note-classifier.onrender.com)
 
-Note: if you want to run the model on the website, you will need to host the website locally. Instructions below.
+*Note: if you want to run the model on the website, you will need to host the website locally. Instructions below.
 
 ## Download Files
 - [Download Model (cnn-musical-note-classifier.onnx)](https://github.com/dongim04/musical-note-classifier/raw/main/cnn-musical-note-classifier.onnx)
